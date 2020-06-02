@@ -2,5 +2,6 @@
 master-framework-js.code-workspace
 
 # IMAGE FILES
+*.jpg
 *.svg
 *.png
