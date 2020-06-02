@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
 </head>
+
 <body>
     <header id="header">
 
@@ -31,56 +33,46 @@
             <!-- LIMPIAR FLOTADOS -->
             <div class="clearfix"></div>
         </div>
-        
-    </header>
 
-    <div id="slider" class="slider-big">
-        <h1>Bienvenido al curso de React con V&iacute;ctor Robles de victorroblesweb.es</h1>
-        <a href="#" class="btn-white">Ir al blog</a>
-    </div>
+    </header>
 
     <div class="center">
         <section id="content">
-            <h2 class="subheader">&Uacute;ltimos Art&iacute;culos</h2>
 
-            <!-- Listado artículos -->
-            <div id="articles">
-                <article class="article-item" id="article-template">
-                    <div class="image-wrap">
-                        <img src="assets/images/daniela.jpg" alt="danielita">
-                    </div>
-    
-                    <h2>Art&iacute;culo de prueba</h2>
-                    <span class="date">
-                        Hace 5 min
-                    </span>
-                    <a href="#">Leer m&aacute;s</a>
+            <h1 class="subheader">Formulario</h1>
 
-                    <div class="clearfix"></div>
-                </article>
+            <form action="" class="mid-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre : </label>
+                    <input type="text" name="nombre" />
+                </div>
 
-                <!-- AÑADIR ARTICULOS VIA JS -->
-            </div>
-            
-            <script type="text/javascript">
-                window.addEventListener('load', function(event){
-                    let template = document.getElementById('article-template')
+                <div class="form-group">
+                    <label for="apellidos">Apellidos : </label>
+                    <input type="text" name="apellidos" />
+                </div>
 
-                    let articles = document.getElementById('articles')
+                <div class="form-group">
+                    <label for="nombre">Nombre : </label>
+                    <input type="text" name="nombre" />
+                </div>
 
-                    for(let i=0; i<=5; i++){
-                        let clonado = template.cloneNode(true)
+                <div class="form-group">
+                    <label for="bio">Biograf&iacute;a : </label>
+                    <textarea name="bio" cols="30" rows="10"></textarea>
+                </div>
 
-                        clonado.removeAttribute('id')
-                        let h2 = clonado.getElementsByTagName('h2')[0]
+                <div class="form-group radiobuttons">
+                    <input type="radio" name="genero" value="hombre" />Homber
+                    <input type="radio" name="genero" value="mujer" />Mujer
+                    <input type="radio" name="genero" value="otro" />Otro
+                </div>
 
-                        h2.innerHTML = `${h2.textContent} ${i}`
-                        articles.appendChild(clonado)
-                    }
-                })
-                
-            </script>
+                <div class="clearfix"></div>
 
+                <input type="submit" value="Enviar" class="btn btn-success">
+
+            </form>
         </section>
 
         <aside id="sidebar">
@@ -102,11 +94,12 @@
         <!-- LIMPIAR FLOTADOS -->
         <div class="clearfix"></div>
     </div>
-    
+
     <footer id="footer">
         <div class="center">
             <p>&copy; M&aacute;ster en Frameworks para JavaScript de victorroblesweb.es</p>
         </div>
     </footer>
 </body>
+
 </html>
