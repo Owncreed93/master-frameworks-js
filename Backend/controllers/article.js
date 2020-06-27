@@ -113,6 +113,91 @@ let controller = {
         })
 
         
+    },
+
+    getArticle: (req, res) => {
+
+        // * GET THE ID FROM THE URL
+        let articleId = req.params.id;
+
+        // * CHECK IF IT EXISTS
+        if(!articleId || articleId == null ){
+            return res.status(404).send({
+                status:'error',
+                message: 'No hay articulos para mostrar!!!'
+            })
+        }
+
+        // * LOOK FOR THE ARTICLE
+        Article.findById(articleId, (err, article) => {
+
+            if(err || !article){
+                return res.status(404).send({
+                    status:'error',
+                    message: 'No existe el articulo!!!'
+                });
+            }
+
+            // * DISPLAY JSON
+            return res.status(200).send({
+                status:'success',
+                article
+            })
+        })
+
+    },
+
+    update: (req, res) => {
+
+        // * GET THE ARTICLE BY THE URL
+        let articleId = req.params.id
+
+        // * GET THE DATA BY HTTP PUT METHOD
+        let params = req.body
+
+        // * VALIDATE THE DATA
+        let validate_title
+        let validate_content
+        try {
+            validate_title = !validator.isEmpty(params.title)
+            validate_content = !validator.isEmpty(params.content)
+        }catch(err){
+            return res.status(200).send({
+                status: 'error',
+                message: 'Faltan datos por enviar!'
+            })
+        }
+
+        if (validate_title && validate_content){
+            // * FIND AND UPDATE
+            Article.findOneAndUpdate({_id: articleId}, params, {new:true}, (err, articleUpdated) => {
+                if ( err ){
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al actualizar'
+                    })
+                }
+
+                if ( !articleUpdated ){
+                    return res.status(404).send({
+                        status: 'error',
+                        message: 'No existe ningún artículo'
+                    })
+                }
+
+                return res.status(200).send({
+                    status:'success',
+                    article: articleUpdated
+                });
+
+            })
+        } else {
+            return res.status(200).send({
+                status:'error',
+                message: 'La validación no es correcta!!!'
+            });
+        }
+        
     }
 
 } // end controller
