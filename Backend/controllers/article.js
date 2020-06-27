@@ -79,7 +79,7 @@ let controller = {
             })
         }
 
-    },
+    }, // * SAVE ARTICLE
 
     getArticles: (req, res) => {
 
@@ -118,7 +118,7 @@ let controller = {
         })
 
         
-    },
+    }, // * GET THE ARTICLES
 
     getArticle: (req, res) => {
 
@@ -150,7 +150,7 @@ let controller = {
             })
         })
 
-    },
+    }, // * GET ONE ARTICLE BY ITS ID
 
     update: (req, res) => {
 
@@ -203,7 +203,7 @@ let controller = {
             });
         }
         
-    },
+    }, // * UPDATE AN ARTICLE
 
     delete: (req, res) => {
 
