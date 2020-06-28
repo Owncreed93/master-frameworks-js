@@ -10,11 +10,11 @@
         <!-- MENU -->
         <nav id="menu">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="formulario.html">Formulario</a></li>
-                <li><a href="#">P&aacute;gina 1</a></li>
-                <li><a href="#">P&aacute;gina 2</a></li>
+                <li><a [routerLink]="['/home']" [routerLinkActive]="['active']">Inicio</a></li>
+                <li><a [routerLink]="['/blog']" [routerLinkActive]="['active']">Blog</a></li>
+                <li><a [routerLink]="['/formulario']" [routerLinkActive]="['active']">Formulario</a></li>
+                <li><a [routerLink]="['/peliculas']" [routerLinkActive]="['active']">P&aacute;gina 1</a></li>
+                <li><a [routerLink]="['/pagina-de-pruebas']" [routerLinkActive]="['active']">P&aacute;gina 2</a></li>
             </ul>
         </nav>
 

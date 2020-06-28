@@ -95,8 +95,8 @@ body {
     transition: 300ms all;
 }
 
-#menu a:hover{
-    color: #c3002f;
+#menu a:hover, .active{
+    color: #c3002f !important ;
 }
 
 #slider {
