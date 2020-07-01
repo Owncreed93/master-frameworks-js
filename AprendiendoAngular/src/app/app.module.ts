@@ -15,6 +15,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { PaginaComponent } from './components/pagina/pagina.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { ErrorComponent } from './components/error/error.component';
+import { PeliculaComponent } from './components/pelicula/pelicula.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ErrorComponent } from './components/error/error.component';
     PaginaComponent,
     FormularioComponent,
     ErrorComponent,
+    PeliculaComponent,
   ],
   imports: [
     BrowserModule,

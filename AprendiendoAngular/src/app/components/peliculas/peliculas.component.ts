@@ -10,6 +10,7 @@ export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
 
   public titulo: string;
   public peliculas: Pelicula[];
+  public favorita: Pelicula;
 
   constructor() {
     this.titulo = 'Puente Peliculas';
@@ -41,4 +42,8 @@ export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
     console.log('THIS IS DESTROYED');
   }
 
+  // * OUTPUT FUNCTION RECEIVER (BOTH (OUTPUT AND INPUT) MUST HAVE THE SAME NAME TO WORK)
+  mostrarFavorita(event): void{
+    this.favorita = event.pelicula;
+  }
 }
