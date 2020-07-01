@@ -99,6 +99,25 @@ body {
     color: #c3002f !important ;
 }
 
+.year-green{
+    background: #41b883;
+    color: white;
+    padding: 5px;
+    display: block;
+    width: 121px;
+    text-align: center;
+}
+
+.year-red{
+    background: #c3002f;
+    color: white;
+    padding: 5px;
+    display: block;
+    width: 121px;
+    text-align: center;
+}   
+
+
 #slider {
     background-color:#c3002f;
     width: 100%;

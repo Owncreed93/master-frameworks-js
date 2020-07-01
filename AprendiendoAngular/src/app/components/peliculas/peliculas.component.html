@@ -2,3 +2,42 @@
 
 <h2>{{ titulo }}</h2>
 <button (click)=cambiarTitulo() >P&uacute;lsame</button>
+
+<hr>
+<br>
+
+<h3>N&uacute;mero de pel&iacute;culas</h3>
+<div *ngIf="peliculas.length > 0">
+    {{ peliculas.length}} <br>
+    <span *ngIf="peliculas.length > 3">Hay muchas pel&iacute;culas</span>
+    
+</div>
+
+<hr>
+<br>
+
+<h2 class="subheader">Listado de peliculas</h2>
+<div id="articles" *ngIf="peliculas">
+    <article class="article-item" *ngFor="let pelicula of peliculas; let i = index;">
+        <div class="image-wrap">
+            <img src="{{ pelicula.image }}" alt="{{ pelicula.title }}">
+        </div>
+
+        <h2>{{ i }} - {{ pelicula.title }}</h2>
+        <span class="date">
+            Hace 5 min.
+        </span>
+
+        <span class="year" 
+                            [ngClass]="{
+                                'year-green': pelicula.year > 2016,
+                                'year-red': pelicula.year < 2016
+                            }">
+            {{ pelicula.year }}
+        </span>
+
+        <a href="#">Leer m&aacute;s</a>
+
+        <div class="clearfix"></div>
+    </article>
+</div>
