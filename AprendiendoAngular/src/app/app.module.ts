@@ -18,6 +18,9 @@ import { ErrorComponent } from './components/error/error.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 
 
+// * PIPES
+import { EsParPipe } from './pipes/espar.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +37,7 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
     FormularioComponent,
     ErrorComponent,
     PeliculaComponent,
+    EsParPipe,
   ],
   imports: [
     BrowserModule,

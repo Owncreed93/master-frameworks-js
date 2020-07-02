@@ -9,9 +9,11 @@
             <h2 class="subheader">
                 Pelicula favorita
             </h2>
-            <strong>Título : </strong><span>{{ favorita.title }}</span>
+            <h4>{{ favorita.title | lowercase }}</h4>
             <br>
-            <strong>Año: </strong><span>{{ favorita.year }}</span>
+            <h4>{{ favorita.year | espar }}</h4>
+            <br>
+            <h4>{{ this.fecha | date:'dd/MM/yyyy' }}</h4>
         </div>
         <!-- 
         <h2>{{ titulo }}</h2>
