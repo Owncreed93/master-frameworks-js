@@ -1,10 +1,12 @@
-<app-slider [nombre] = "'Bienvenido al curso de Angular con Víctor Robles de victorroblesweb.es 2'" ></app-slider>
+<app-slider [nombre] = "'Bienvenido al curso de Angular con Víctor Robles de victorroblesweb.es'" ></app-slider>
 
 
 <div class="center">
     <section id="content">
 
         <h2 class="subheader">{{ title }}</h2>
+
+        <app-articles [articles]="articles"></app-articles>
     </section>
 
     <app-sidebar></app-sidebar>
