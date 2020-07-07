@@ -1,10 +1,13 @@
 import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { Pelicula } from '../../models/pelicula';
+import { PeliculaService } from '../../services/pelicula.service';
+
 
 @Component({
   selector: 'peliculas',
   templateUrl: './peliculas.component.html',
-  styleUrls: ['./peliculas.component.css']
+  styleUrls: ['./peliculas.component.css'],
+  providers: [PeliculaService, ],
 })
 export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
 
@@ -13,13 +16,11 @@ export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
   public favorita: Pelicula;
   public fecha: any;
 
-  constructor() {
+  constructor(
+    private _peliculaService: PeliculaService
+  ) {
     this.titulo = 'Puente Peliculas';
-    this.peliculas = [
-      new Pelicula( 'Spider-Man 4', 2019, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/spiderman-sony-spiderverso-1567749360.jpeg' ),
-      new Pelicula( 'Vengdores: End Game', 2018, 'https://as.com/meristation/imagenes/2019/04/09/noticias/1554800344_323839_1554800388_noticia_normal.jpg' ),
-      new Pelicula( 'Batman V Superman', 2015, 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2016/07/batman-v-superman-ultimate-edition.jpg?itok=OzyYHL55' ),
-    ];
+    this.peliculas = this._peliculaService.getPeliculas();
     this.fecha = new Date();
     console.log('Constructor lanzado');
   }
@@ -28,6 +29,7 @@ export class PeliculasComponent implements OnInit, DoCheck, OnDestroy {
   ngOnInit(): void {
     console.log('Componente iniciado');
     console.log(this.peliculas);
+    console.log(this._peliculaService.holaMundo());
   }
 
   // * HOOK THAT EXECUTES WHENEVER SOMETHING CHANGES
