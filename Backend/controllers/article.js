@@ -7,6 +7,7 @@ let path = require('path')
 let Article = require('../models/article');
 const { exists } = require('../models/article');
 const article = require('../models/article');
+const { param } = require('../routes/articles');
 
 let controller = {
 
@@ -47,7 +48,12 @@ let controller = {
                 // * ASIGN VALUES TO THE RECENT CREATED OBJECT
                 article.title = params.title
                 article.content = params.content
-                article.image = null
+
+                if (params.image){
+                    article.image = params.image
+                } else {
+                    article.image = null
+                }
 
                 // * SAVE THE OBJECT
                 article.save( (err, articleStored) => {
@@ -281,30 +287,37 @@ let controller = {
             // * GET THE ARTICLE'S ID BY THE URL
             let articleID = req.params.id
 
+            if ( articleID ){
+                 // * LOOKF FOR THE ARTICLE, ASIGN NAME TO THE IMAGE AND UPDATE IT 
+                Article.findOneAndUpdate({_id: articleID }, {image: file_name}, {new: true}, (err, articleUpdated) => {
+                    if ( err ){
+                        return res.status(500).send({
+                            status: 'error',
+                            message: 'La imagen no se actualizó'
+                        })
+                    }
 
-            // * LOOKF FOR THE ARTICLE, ASIGN NAME TO THE IMAGE AND UPDATE IT 
-            Article.findOneAndUpdate({_id: articleID }, {image: file_name}, {new: true}, (err, articleUpdated) => {
-                if ( err ){
-                    return res.status(500).send({
-                        status: 'error',
-                        message: 'La imagen no se actualizó'
+                    if ( !articleUpdated ){
+                        return res.status(404).send({
+                            status: 'err',
+                            message: 'Articulo no encontrado'
+                        })
+                    }
+
+                    return res.status(200).send({
+                        status:'success',
+                        fichero: req.files,
+                        article: articleUpdated
                     })
-                }
 
-                if ( !articleUpdated ){
-                    return res.status(404).send({
-                        status: 'err',
-                        message: 'Articulo no encontrado'
-                    })
-                }
-
+                })
+            } else {
                 return res.status(200).send({
                     status:'success',
-                    fichero: req.files,
-                    article: articleUpdated
+                    image: file_name
                 })
-
-            })
+            }
+           
             
         }
  
