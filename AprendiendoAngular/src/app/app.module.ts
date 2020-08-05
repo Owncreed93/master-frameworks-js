@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 // * EXTERNAL LIBRARY
 import { MomentModule } from 'angular2-moment';
+import { AngularFileUploaderModule } from 'angular-file-uploader';
 
 // * OWN MODULES
 import { MiComponenteComponent } from './components/mi-componente/mi-componente.component';
@@ -30,6 +31,7 @@ import { EsParPipe } from './pipes/espar.pipe';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { ArticleComponent } from './components/article/article.component';
 import { SearchComponent } from './components/search/search.component';
+import { ArticleNewComponent } from './components/article-new/article-new.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { SearchComponent } from './components/search/search.component';
     ArticlesComponent,
     ArticleComponent,
     SearchComponent,
+    ArticleNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { SearchComponent } from './components/search/search.component';
     FormsModule,
     HttpClientModule,
     MomentModule,
+    AngularFileUploaderModule,
   ],
   providers: [ appRoutingProviders ],
   bootstrap: [AppComponent]

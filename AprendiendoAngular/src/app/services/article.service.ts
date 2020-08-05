@@ -35,10 +35,30 @@ export class ArticleService{
         return this._http.get(`${this.url}article/${articleId}`);
     }
 
-    search(searchString):Observable<any>{
-        return this._http.get(`${this.url}search/${searchString}`)
+    search(searchString): Observable<any>{
+        return this._http.get(`${this.url}search/${searchString}`);
     }
 
-    
+    create(article): Observable<any>{
+        const params = JSON.stringify(article);
+
+        const headers = new HttpHeaders().set('Content-type', 'application/json');
+
+        return this._http.post(`${this.url}save`, params, {headers: headers});
+    }
+
+    update(id, article): Observable<any>{
+        const params = JSON.stringify(article);
+
+        const headers = new HttpHeaders().set('Content-type', 'application/json');
+
+        return this._http.put(`${this.url}article/${id}`, params, {headers: headers});
+    }
+
+    delete(id): Observable<any>{
+        const headers = new HttpHeaders().set('Content-type', 'application/json');
+
+        return this._http.delete(`${this.url}article/${id}`, {headers: headers});
+    }
 
 }

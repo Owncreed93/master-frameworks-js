@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
 
@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit {
             console.log(response);
             if(response.articles){
               this.articles = response.articles;
-              console.log(this.articles); 
+              console.log(this.articles);
             }
             console.log(this.articles);
           },
