@@ -136,8 +136,6 @@ body {
     background: radial-gradient(ellipse at center, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 0%, rgba(246,41,12,1) 59%, rgba(195,0,47,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#c3002f', GradientType=1 );
 
-
-
 }
 
 #slider h1{
@@ -293,6 +291,10 @@ textarea
     width: 100% !important;
     max-width: 90% !important;
     margin-top: 15px;
+}
+
+.image-thumb img{
+    width: 150px;
 }
 
 input[type="text"]:focus,
