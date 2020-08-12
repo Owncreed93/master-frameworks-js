@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert';
 import { Article } from '../../models/article';
 import { ArticleService } from '../../services/article.service';
 import { Global } from '../../services/global';
@@ -57,20 +58,33 @@ export class ArticleNewComponent implements OnInit {
 
   onSubmit(): void {
     this._articleService.create(this.article).subscribe(
+
       response => {
         if (response.status === 'success') {
+
           this.status = 'success';
           this.article = response.article;
           console.log(response);
+
+          // * Sweet Alert
+          swal(
+            'Articulo creado',
+            'El articulo se ha creado correctamente',
+            'success'
+          );
+
           this._router.navigate(['/blog']);
+
         } else {
           this.status = 'error';
         }
       },
+
       error => {
         console.log(error);
         this.status = error;
       }
+
     );
   }
 

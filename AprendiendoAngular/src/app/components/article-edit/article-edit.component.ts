@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert';
 import { Article } from '../../models/article';
 import { ArticleService } from '../../services/article.service';
 import { Global } from '../../services/global';
@@ -64,6 +65,14 @@ export class ArticleEditComponent implements OnInit {
           this.status = 'success';
           this.article = response.article;
           console.log(response);
+
+          // Alert
+          swal(
+            'Articulado editado',
+            'El articulo se ha modificado correctamente',
+            'success'
+          );
+
           this._router.navigate(['/blog/articulo', this.article._id]);
         } else {
           this.status = 'error';
