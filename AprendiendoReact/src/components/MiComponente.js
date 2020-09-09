@@ -22,6 +22,13 @@ class MiComponente extends Component{
             <div className="mi-componente">
                 <h1>Receta: {receta.nombre}</h1>
                 <h2>Calorías: {receta.calorias}</h2>
+                {this.props.saludo &&
+                    <React.Fragment>
+                        <h2>Desde una prop: </h2>
+                        <h3>{this.props.saludo}</h3>
+                    </React.Fragment>
+                }
+                
                 <ol>
                     {
                         receta.ingredientes.map((ingrediente, i) => {
