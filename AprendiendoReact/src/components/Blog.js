@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import Slider from './Slider';
 import Sidebar from './Sidebar';
+import Articles from './Articles';
 
 
 class Blog extends Component {
+
+    state = {
+        articles: {},
+        status: null
+    }
 
     render() {
 
@@ -20,6 +26,7 @@ class Blog extends Component {
 
                     <div id="content">
                         {/* ARTICLES LIST FROM THE API */}
+                        <Articles />
                     </div>
 
                     <Sidebar
