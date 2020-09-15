@@ -7,8 +7,9 @@ import Header from './components/Header.js';
 import Blog from './components/Blog.js';
 import Footer from './components/Footer.js';
 import MiComponente from './components/MiComponente.js';
+import Formulario from './components/Formulario.js';
+import Peliculas from './components/Peliculas.js';
 import Error from './components/Error.js';
-
 
 
 
@@ -26,7 +27,8 @@ class Router extends Component {
                         <Route exact path="/" component={Home} />
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/blog" component={Blog} />
-                        <Route exact path="/segunda-ruta" component={MiComponente} />
+                        <Route exact path="/formulario" component={Formulario} />
+                        <Route exact path="/peliculas" component={Peliculas} />
 
                         <Route exact path="/pagina-1" render= { () => (
                             <React.Fragment>
