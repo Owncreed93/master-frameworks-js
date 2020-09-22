@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Profiler } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // * COMPONENTS
@@ -27,6 +27,12 @@ class Router extends Component {
                         <Route exact path="/" component={Home} />
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/blog" component={Blog} />
+                        <Route exact path="/blog/articulo/:id" render={ () => (
+
+                            <h1> P&aacute;gina 1 </h1>
+
+                        )
+                        }/>
                         <Route exact path="/formulario" component={Formulario} />
                         <Route exact path="/peliculas" component={Peliculas} />
 

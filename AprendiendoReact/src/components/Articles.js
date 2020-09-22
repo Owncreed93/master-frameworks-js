@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
+// * PACKAGES
 import axios from 'axios';
+import Moment from 'react-moment';
+import 'moment-timezone';
+import 'moment/locale/es';
+
+// * INNER IMPORTS
+import Global from './Global';
+
+import ImageDefault from '../assets/images/image-not-found.jpg';
+
+
 
 class Articles extends Component {
+
+    url = Global.url
 
     state = {
 
@@ -13,13 +27,47 @@ class Articles extends Component {
 
     componentWillMount() {
 
-        this.getArticles();
+        let home =  this.props.home;
+
+        if ( home === 'true' ) {
+
+            this.getLastArticles();
+
+        } else {
+
+            this.getArticles();
+
+        }
+
+        
+
+    }
+
+    getLastArticles = () => {
+       
+        axios.get( `${this.url}articles/last` )
+            .then( res => {
+
+                this.setState({
+
+                    articles: res.data.articles,
+                    status: ''
+
+                });
+
+
+            })
+            .catch( err => {
+
+                console.log(err);
+
+            })
 
     }
 
     getArticles = () => {
        
-        axios.get( "http://localhost:3900/api/articles/" )
+        axios.get( `${this.url}articles/` )
             .then( res => {
 
                 this.setState({
@@ -44,9 +92,37 @@ class Articles extends Component {
 
         if ( this.state.articles.length >= 1 ){
 
+            let listArticles = this.state.articles.map( (article) =>  {
+
+                return (
+                    <article className="article-item article-detail" key={article._id}>
+                        <div className="image-wrap">
+                            { article.image !== null ?
+                                (<img src={this.url+'get-image/'+article.image} alt={article.title} />)
+                                : 
+                                (<img src={ImageDefault} alt={article.title} />)
+                            }
+                        </div>
+
+                        <h1 className="subheader"> {article.title} </h1>
+
+                        <span className="date">
+                            <Moment fromNow date={ article.date } />
+                        </span>
+                        <Link to={'/blog/articulo/'+article._id}>Leer m&aacute;s</Link>
+
+                        <div className="clearfix"></div>
+                    </article>
+                );
+
+
+            });
+
+
+
             return (
                 <div id="articles">
-                    <h1> Listado de Articulos </h1>
+                    {listArticles}
                 </div>
             )
 
