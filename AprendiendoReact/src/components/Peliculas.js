@@ -128,7 +128,7 @@ class Peliculas extends Component {
 
                         {/** CREATE PELICULA COMPONENT */}
 
-                        <div className="articles" className="peliculas">
+                        <div className="article-item">
                             {this.state.peliculas.map( (pelicula, i) => {
 
                                 return(

@@ -28,10 +28,15 @@ class Articles extends Component {
     componentWillMount() {
 
         let home =  this.props.home;
+        let search = this.props.search;
 
         if ( home === 'true' ) {
 
             this.getLastArticles();
+
+        } else if (search && search !== null && search !== undefined ) {
+
+            this.getArticlesBySearch(search);
 
         } else {
 
@@ -40,6 +45,33 @@ class Articles extends Component {
         }
 
         
+
+    }
+
+    getArticlesBySearch = (searched) => {
+       
+        axios.get( `${this.url}search/${searched}` )
+            .then( res => {
+
+                this.setState({
+
+                    articles: res.data.articles,
+                    status: 'success'
+    
+                });
+
+            })
+            .catch( err => {
+
+                this.setState({
+
+                    articles: [],
+                    status: 'success'
+    
+                });
+                console.log(err)
+
+            })
 
     }
 
@@ -126,7 +158,7 @@ class Articles extends Component {
                 </div>
             )
 
-        } else if ( this.state.articles.length === 0 && this.status === 'success') {
+        } else if ( this.state.articles.length === 0 && this.state.status === 'success') {
 
             return (
                 <div id="articles">
