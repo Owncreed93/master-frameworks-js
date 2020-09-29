@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 // * COMPONENTS
 import Home from './components/Home.js';
@@ -11,9 +11,7 @@ import Formulario from './components/Formulario.js';
 import Search from './components/Search.js';
 import Peliculas from './components/Peliculas.js';
 import Error from './components/Error.js';
-
-
-
+import Article from './components/Article.js';
 
 class Router extends Component {
 
@@ -29,13 +27,18 @@ class Router extends Component {
                         <Route exact path="/" component={Home} />
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/blog" component={Blog} />
-                        <Route exact path="/blog/articulo/:id" render={ () => (
-
-                            <h1> P&aacute;gina individual del Art&iacute;culo </h1>
-
-                        )
-                        }/>
+                        <Route exact path="/blog/articulo/:id" component={Article} />
                         <Route exact path="/blog/busqueda/:search" component={Search} />
+                        <Route exact path="/redirect/:search" render={ 
+                            (props) => {
+
+                                let search = props.match.params.search;
+
+                                return (<Redirect to={`/blog/busqueda/${search}`}/>);
+
+                            }
+                         
+                        }/>
                         <Route exact path="/formulario" component={Formulario} />
                         <Route exact path="/peliculas" component={Peliculas} />
 
