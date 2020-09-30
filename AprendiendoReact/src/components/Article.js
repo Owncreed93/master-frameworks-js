@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment/locale/es';
 
 import Global from '../Global';
 import Sidebar from './Sidebar';
-import Articles from './Articles';
 import ImageDefault from '../assets/images/image-not-found.jpg';
 
 class Article extends Component {
@@ -63,7 +62,7 @@ class Article extends Component {
                         <article className="article-item article-detail">
                             <div className="image-wrap">
                             { article.image !== null ?
-                                <img src={`${this.url}get-image/${article.image}`}/>
+                                <img src={`${this.url}get-image/${article.image}`} alt={article.title}/>
                                 : 
                                 (<img src={ImageDefault} alt={article.title} />)
                             }
@@ -79,8 +78,8 @@ class Article extends Component {
                                 {article.content}
                             </p>
 
-                            <a href="#" className="btn btn-danger">Eiminar</a>
-                            <a href="#" className="btn btn-warning">Editar</a>
+                            <Link to='/blog' className="btn btn-danger">Eiminar</Link>
+                            <Link to='/blog' className="btn btn-warning">Editar</Link>
 
                             <div className="clearfix"></div>
                         </article>

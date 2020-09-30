@@ -6,7 +6,9 @@ import axios from 'axios';
 import Global from '../Global';
 import Sidebar from './Sidebar';
 
+
 // * FORM VALIDATION AND ALERTS
+import SimpleReactValidator from 'simple-react-validator';
 
 class CreateArticle extends Component {
 
@@ -14,14 +16,29 @@ class CreateArticle extends Component {
 
     titleRef = React.createRef();
     contentRef = React.createRef();
+    
 
     state = {
 
         article: {},
-        status: null
+        status: null,
+        selectedFile: null
 
     };
 
+
+    // * METHODS
+    componentWillMount() {
+
+        this.validator = new SimpleReactValidator({
+            messages: {
+                required: 'Este campo es requerido'
+            }
+        });
+
+    }
+
+    // ------------------------------------------------------------------------ //
     changeState = () => {
 
         this.setState({
@@ -31,10 +48,17 @@ class CreateArticle extends Component {
             }
         });
 
+
+        this.validator.showMessages();
+        this.forceUpdate();
+
+    
+
         console.log(this.state);
 
     }
 
+    // ------------------------------------------------------------------------ //
 
     saveArticle = (e) => {
 
@@ -43,45 +67,126 @@ class CreateArticle extends Component {
         // FILL STATE IN THE FORM
         this.changeState();
 
+        // * VALIDATE FORM
+        if( this.validator.allValid() ){
+            // MAKE A HTTP REQUEST VIA POST TO SAVE ARTICLE
+            axios.post( `${this.url}save`, this.state.article )
+                .then( res => {
+                    if( res.data.article ) {
 
-        // MAKE A HTTP REQUEST VIA POST TO SAVE ARTICLE
-        axios.post( `${this.url}save`, this.state.article )
-            .then( res => {
-                if( res.data.article ) {
+                        this.setState({
 
-                    this.setState({
+                            article: res.data.article,
+                            status: 'waiting'
 
-                        article: res.data.article,
-                        status: 'success'
+                        });
 
-                    })
+                        // * UPLOAD IMAGE
+                        if(this.state.selectedFile !== null) {
 
-                    console.log(this.state)
+                            // * GET ARTICLES'ID
+                            let articleId = this.state.article._id;
 
-                } else {
+                            // * CREATE FORM DATA AND ADD FILE
+                            const formData = new FormData();
 
-                    this.setState({
-                        status: 'failed'
-                    })
+                            formData.append(
+                                'file0',
+                                this.state.selectedFile,
+                                this.state.selectedFile.name
+                            )
+                            
 
-                    console.log(res)
+                            // * AJAX REQUEST
+                            axios.post(`${this.url}/upload-image/${articleId}`, formData)
+                                .then(res => {
 
-                }
+                                    if( res.data.article ) {
 
-            })
-            .catch( err => {
+                                        this.setState({
 
-                this.setState({
+                                            article: res.data.article,
+                                            status: 'success'
 
-                    article: {},
-                    status: 'failed'
-    
-                });
-                console.log(err)
+                                        })
 
-            })
+                                    } else {
+
+                                        this.setState({
+
+                                            article: res.data.article,
+                                            status: 'false'
+
+                                        })
+
+                                    }
+
+                                })
+
+
+                        } else {
+
+                            this.setState({
+
+                                status: 'success'
+
+                            })
+
+                        }
+
+                        console.log(this.state)
+
+                    } else {
+
+                        this.setState({
+                            status: 'failed'
+                        })
+
+                        console.log(res)
+
+                    }
+
+                })
+                // .catch( err => {
+
+                //     this.setState({
+
+                //         article: {},
+                //         status: 'failed'
+        
+                //     });
+                //     console.log(err)
+
+                // })
+        } else {
+
+            this.setState({
+
+                status: 'failed'
+
+            });
+
+            this.validator.showMessages();
+            this.forceUpdate();
+
+        }
+    }
+
+    // ------------------------------------------------------------------------ //
+
+    fileChange = (event) => {
+
+        this.setState({
+
+            selectedFile: event.target.files[0]
+
+        })
+
+        console.log(this.state)
 
     }
+
+    // ------------------------------------------------------------------------ //
 
     render() {
 
@@ -105,6 +210,9 @@ class CreateArticle extends Component {
                             <label htmlFor="title">T&iacute;tulo : </label>
                             <input type="text" name="title" ref={this.titleRef} onChange={this.changeState}/>
 
+                            {/* VALIDATION */}
+                            { this.validator.message('title', this.state.article.title, 'required|alpha_num_space') }
+
                         </div>
 
                         <div className="form-group">
@@ -112,12 +220,15 @@ class CreateArticle extends Component {
                             <label htmlFor="content">Contenido : </label>
                             <textarea name="content" ref={this.contentRef} onChange={this.changeState}></textarea>
 
+                            {/* VALIDATION */}
+                            { this.validator.message('content', this.state.article.content, 'required') }
+
                         </div>
 
                         <div className="form-group" >
 
                             <label htmlFor="file0">Imagen : </label>
-                            <input  type="file" name="file0" />
+                            <input  type="file" name="file0" onChange={this.fileChange}/>
 
                         </div>
 
