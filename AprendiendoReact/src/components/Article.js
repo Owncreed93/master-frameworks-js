@@ -5,7 +5,7 @@ import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment/locale/es';
 
-import Global from './Global';
+import Global from '../Global';
 import Sidebar from './Sidebar';
 import Articles from './Articles';
 import ImageDefault from '../assets/images/image-not-found.jpg';

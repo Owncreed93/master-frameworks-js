@@ -243,6 +243,7 @@ body {
 
 
 input[type="text"],
+input[type="file"],
 textarea{
   width: 100%;
   min-height: 30px;
@@ -264,6 +265,10 @@ textarea{
   max-width: 100%;
   min-height: 150px;
   max-height: 300px;
+}
+
+input[type="submit"] {
+  margin-top: 15px;
 }
 
 .radiobuttons{

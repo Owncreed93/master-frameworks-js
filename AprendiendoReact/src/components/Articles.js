@@ -8,7 +8,7 @@ import 'moment-timezone';
 import 'moment/locale/es';
 
 // * INNER IMPORTS
-import Global from './Global';
+import Global from '../Global';
 
 import ImageDefault from '../assets/images/image-not-found.jpg';
 
