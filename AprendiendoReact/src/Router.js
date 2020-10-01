@@ -13,6 +13,7 @@ import Peliculas from './components/Peliculas.js';
 import Error from './components/Error.js';
 import Article from './components/Article.js';
 import CreateArticle from './components/CreateArticle.js';
+import EditArticle from './components/EditArticle.js';
 
 class Router extends Component {
 
@@ -30,6 +31,7 @@ class Router extends Component {
                         <Route exact path="/blog" component={Blog} />
                         <Route exact path="/blog/articulo/:id" component={Article} />
                         <Route exact path="/blog/crear" component={CreateArticle} />
+                        <Route exact path="/blog/editar/:id" component={EditArticle} />
                         <Route exact path="/blog/busqueda/:search" component={Search} />
                         <Route exact path="/redirect/:search" render={ 
                             (props) => {

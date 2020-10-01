@@ -271,6 +271,12 @@ input[type="submit"] {
   margin-top: 15px;
 }
 
+.thumb{
+  display: block;
+  width: 170px;
+  float: left;
+}
+
 .radiobuttons{
   margin-top: 10px;
   margin-bottom: 10px;
