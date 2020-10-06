@@ -1,9 +1,10 @@
 <template>
 
-    <div id="mi-componente">
-        <h1>Este es MI COMPONENTE</h1>
-        <h2>{{ subtitulo }}</h2>
-    </div>
+    <section id="content">
+        <h2 class="subheader">{{ msg }}</h2>
+        <h3>Este es MI COMPONENTE</h3>
+        <h3>{{ subtitulo }}</h3>
+    </section>
     
 </template>
 
