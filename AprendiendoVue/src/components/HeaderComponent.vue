@@ -11,11 +11,21 @@
             <!-- MENU -->
             <nav id="menu">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="formulario.html">Formulario</a></li>
-                    <li><a href="#">P&aacute;gina 1</a></li>
-                    <li><a href="#">P&aacute;gina 2</a></li>
+                    <li>
+                        <router-link to="/home">Inicio</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/blog">Blog</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/formulario">Formulario</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/pagina">P&aacute;gina 1</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/mi-componente">P&aacute;gina 2</router-link>
+                    </li>
                 </ul>
             </nav>
 

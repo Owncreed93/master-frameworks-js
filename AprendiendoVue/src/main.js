@@ -5,6 +5,9 @@ import App from './App.vue'
 import LastArticles from './components/LastArticles.vue';
 import MiComponente from './components/MiComponente.vue';
 import HelloWorld from './components/HelloWorld.vue';
+import Blog from './components/Blog.vue';
+import Formulario from './components/Formulario.vue';
+import Pagina from './components/Pagina.vue';
 
 // * EXTERNAL PACKAGES
 import VueRouter from 'vue-router';
@@ -19,6 +22,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {path: '/home', component: LastArticles},
+  {path: '/blog', component: Blog},
+  {path: '/formulario', component: Formulario},
+  {path: '/pagina', component: Pagina},
   {path: '/ultimos-articulos', component: LastArticles},
   {path: '/mi-componente', component: MiComponente},
   {path: '/hola-mundo', component: HelloWorld},
