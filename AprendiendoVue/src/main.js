@@ -9,6 +9,7 @@ import Blog from './components/Blog.vue';
 import Formulario from './components/Formulario.vue';
 import Pagina from './components/Pagina.vue';
 import ErrorComponent from './components/ErrorComponent.vue';
+import Peliculas from './components/Peliculas.vue';
 
 // * EXTERNAL PACKAGES
 import VueRouter from 'vue-router';
@@ -26,6 +27,7 @@ const routes = [
   {path: '/blog', component: Blog},
   {path: '/formulario', component: Formulario},
   {path: '/pagina/:id?', name: 'pagina', component: Pagina},
+  {path: '/peliculas', name: 'peliculas', component: Peliculas},
   {path: '/ultimos-articulos', component: LastArticles},
   {path: '/mi-componente', component: MiComponente},
   {path: '/hola-mundo', component: HelloWorld},

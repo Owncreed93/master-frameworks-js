@@ -24,7 +24,7 @@
                         <router-link :to="{name:'pagina', params: {id: 'Soy el valor'}}" active-class="active">P&aacute;gina 1</router-link>
                     </li>
                     <li>
-                        <router-link to="/mi-componente" active-class="active">P&aacute;gina 2</router-link>
+                        <router-link to="/peliculas" active-class="active">P&aacute;gina 2</router-link>
                     </li>
                 </ul>
             </nav>
