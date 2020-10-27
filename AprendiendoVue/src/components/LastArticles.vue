@@ -3,7 +3,7 @@
 
         <Slider 
             texto="Bienvenido al curso de Vue con Víctor Robles de victorroblesweb.es"
-            showBtn="true"
+            home="true"
             ></Slider>
 
         <div class="center">
