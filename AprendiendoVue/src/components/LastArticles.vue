@@ -1,36 +1,57 @@
 <template>
-    <div class="center">
-        <section id="content">
+    <div class="general">
 
-            <h2 class="subheader">&Uacute;ltimos Art&iacute;culos</h2>
+        <Slider 
+            texto="Bienvenido al curso de Vue con Víctor Robles de victorroblesweb.es"
+            showBtn="true"
+            ></Slider>
 
-                <!-- Listado artículos -->
-                <div id="articles">
+        <div class="center">
 
-                    <article class="article-item" id="article-template">
+            <section id="content">
 
-                        <div class="image-wrap">
-                            <img src="assets/images/daniela.jpg" alt="danielita">
-                        </div>
-        
-                        <h2>Art&iacute;culo de prueba</h2>
-                        <span class="date">
-                            Hace 5 min
-                        </span>
-                        <a href="#">Leer m&aacute;s</a>
+                <h2 class="subheader">&Uacute;ltimos Art&iacute;culos</h2>
 
-                        <div class="clearfix"></div>
+                    <!-- Listado artículos -->
+                    <div id="articles">
 
-                    </article>
+                        <article class="article-item" id="article-template">
 
-                    <!-- AÑADIR ARTICULOS VIA JS -->
-                </div>
+                            <div class="image-wrap">
+                                <img src="assets/images/daniela.jpg" alt="danielita">
+                            </div>
+            
+                            <h2>Art&iacute;culo de prueba</h2>
+                            <span class="date">
+                                Hace 5 min
+                            </span>
+                            <a href="#">Leer m&aacute;s</a>
 
-        </section>
+                            <div class="clearfix"></div>
+
+                        </article>
+
+                        <!-- AÑADIR ARTICULOS VIA JS -->
+                    </div>
+
+            </section>
+
+            <Sidebar></Sidebar>
+            <div class="clearfix"></div>
+        </div>
+
     </div>
-</template>   
+</template>
+
 <script>
+import Slider from './Slider';
+import Sidebar from './Sidebar';
+
 export default {
-    name: 'LastArticles'
+    name: 'LastArticles',
+    components: {
+        Slider,
+        Sidebar
+    }
 }
 </script>

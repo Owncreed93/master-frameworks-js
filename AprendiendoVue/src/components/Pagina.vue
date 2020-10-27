@@ -1,19 +1,41 @@
 <template>
-    <div class="center">
-        <section id="content">
-        <h2 class="subheader">P&aacute;gina de pruebas</h2>
-        <h3>{{ id_desde_url }}</h3>
-        <button @click="actualizarNombre()">Actualizar el nombre</button>
-        <button @click="redirigirAlBlog()">Redirigir al blog</button>
-        <h4>{{ nombre }}</h4>
-        </section>
+
+    <div class="general">
+
+        <Slider texto="Pagina de Pruebas"></Slider>
+
+        <div class="center">
+
+
+            <section id="content">
+                <h2 class="subheader">P&aacute;gina de pruebas</h2>
+                <h3>{{ id_desde_url }}</h3>
+                <button @click="actualizarNombre()">Actualizar el nombre</button>
+                <button @click="redirigirAlBlog()">Redirigir al blog</button>
+                <h4>{{ nombre }}</h4>
+            </section>
+
+            <Sidebar></Sidebar>
+            <div class="clearfix"></div>
+
+        </div>
+
     </div>
     
     
 </template>
+
+
 <script>
+import Slider from './Slider';
+import Sidebar from './Sidebar.vue';
+
 export default {
     name: 'Pagina',
+    components: {
+        Slider,
+        Sidebar
+    },
     created(){
         console.log('Componente created!!');
     },

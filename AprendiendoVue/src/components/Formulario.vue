@@ -1,16 +1,30 @@
 <template>
 
-    <div class="center">
+    <div class="general">
 
-        <section id="content">
-            <h2 class="subheader">Formulario</h2>
-        </section>
+        <div class="center">
+
+            
+
+            <section id="content">
+                <h2 class="subheader">Formulario</h2>
+            </section>
+
+            <Sidebar></Sidebar>
+            <div class="clearfix"></div>
+
+        </div>
 
     </div>
     
 </template>
 <script>
+import Sidebar from './Sidebar.vue';
+
 export default {
-    name: 'Formulario'
+    name: 'Formulario',
+    components: {
+        Sidebar
+    }
 }
 </script>

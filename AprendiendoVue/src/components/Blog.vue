@@ -1,16 +1,33 @@
 <template>
 
-    <div class="center">
+    <div class="general">
 
-        <section id="content">
-            <h2 class="subheader">Blog</h2>
-        </section>
+        <Slider texto="Blog"
+            ></Slider>
+
+        <div class="center">
+
+            <section id="content">
+                <h2 class="subheader">Blog</h2>
+            </section>
+
+            <Sidebar></Sidebar>
+            <div class="clearfix"></div>
+
+        </div>
 
     </div>
 
 </template>
 <script>
+import Slider from './Slider';
+import Sidebar from './Sidebar.vue';
+
 export default {
-    name: 'Blog'
+    name: 'Blog',
+    components: {
+        Slider,
+        Sidebar
+    }
 }
 </script>

@@ -2,24 +2,16 @@
   <div id="app">
 
     <HeaderComponent></HeaderComponent>
-
-    <Slider></Slider>
-
-    <div class="center">
       
       <!-- <LastArticles></LastArticles> -->
       <router-view></router-view>
-      <Sidebar></Sidebar>
-      <div class="clearfix"></div>
-    </div>
+      
     <FooterComponent></FooterComponent>
   </div>
 </template>
 
 <script>
 import HeaderComponent from './components/HeaderComponent';
-import Slider from './components/Slider';
-import Sidebar from './components/Sidebar';
 // import LastArticles from './components/LastArticles';
 import FooterComponent from './components/FooterComponent';
 
@@ -27,8 +19,6 @@ export default {
   name: 'App',
   components: {
     HeaderComponent,
-    Slider,
-    Sidebar,
     // LastArticles, 
     FooterComponent
   }
