@@ -13,15 +13,15 @@ import Peliculas from './components/Peliculas.vue';
 
 // * EXTERNAL PACKAGES
 import VueRouter from 'vue-router';
+import Vuelidate from 'vuelidate';
 
 Vue.config.productionTip = false
 
 // * USING THE ROUTES 
-Vue.use(VueRouter)
-
+Vue.use(VueRouter);
+Vue.use(Vuelidate);
 
 //  * SET UP ROUTES
-
 const routes = [
   {path: '/home', component: LastArticles},
   {path: '/blog', component: Blog},
