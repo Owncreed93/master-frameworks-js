@@ -15,23 +15,8 @@
                     <!-- Listado artículos -->
                     <div id="articles">
 
-                        <article class="article-item" id="article-template">
+                        <Articles v-bind:articles="articles"></Articles>
 
-                            <div class="image-wrap">
-                                <img src="assets/images/daniela.jpg" alt="danielita">
-                            </div>
-            
-                            <h2>Art&iacute;culo de prueba</h2>
-                            <span class="date">
-                                Hace 5 min
-                            </span>
-                            <a href="#">Leer m&aacute;s</a>
-
-                            <div class="clearfix"></div>
-
-                        </article>
-
-                        <!-- AÑADIR ARTICULOS VIA JS -->
                     </div>
 
             </section>
@@ -44,14 +29,59 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
+// **************************************************************************** //
+
+import { Global } from '../Global';
+
+import Articles from './Articles.vue';
 import Slider from './Slider';
 import Sidebar from './Sidebar';
+
+// **************************************************************************** //
+
 
 export default {
     name: 'LastArticles',
     components: {
+        Articles,
         Slider,
         Sidebar
+    },
+    mounted() {
+        this.getLastArticles()
+    },
+    data() {
+        return {
+            url: Global.url,
+            articles: null
+        }
+    },
+    methods: {
+
+        getLastArticles(){
+            axios.get(Global.url+'articles/true')
+            .then( 
+                res => {
+
+                    if ( res.data.status == 'success' ) {
+
+                        this.articles = res.data.articles;
+
+                        console.log(this.articles);
+
+                    }
+                }
+            )
+            .catch(
+                error => {
+                    console.error(error)
+                }
+            )
+        }
+
     }
 }
 </script>

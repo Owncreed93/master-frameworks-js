@@ -2,18 +2,22 @@
 
     <div class="general">
 
-        <Slider texto="Blog"
+        <Slider :texto=" 'Búsqueda: ' +' ' +searchString"
             ></Slider>
 
         <div class="center">
 
             <section id="content">
-                <h1 class="subheader">Blog</h1>
+                <h1 class="subheader" v-if="articles">Art&iacute;culos Encontrados</h1>
+                <h1 class="subheader" v-else>Sin resultados</h1>
 
                 <div id="articles" v-if="articles">
                     <Articles :articles="articles"></Articles>
                    
                         <!-- AÑADIR ARTICULOS VIA JS -->
+                </div>
+                <div v-else>
+                    No hay art&iacute;culos asociados a la b&uacute;squeda
                 </div>
 
             </section>
@@ -35,24 +39,26 @@ import Sidebar from './Sidebar.vue';
 import Articles from './Articles.vue';
 
 export default {
-    name: 'Blog',
+    name: 'Search',
     components: {
         Slider,
         Sidebar,
         Articles
     },
     mounted() {
-        this.getArticles()
+        this.searchString = this.$route.params.searchString;
+        this.getArticlesBySearch(this.searchString);
     },
     data() {
         return {
             url: Global.url,
-            articles: null
+            articles: null,
+            searchString: null
         }
     },
     methods: {
-        getArticles(){
-            axios.get(Global.url+'articles')
+        getArticlesBySearch(searchString){
+            axios.get(Global.url+'search/'+searchString)
             .then( 
                 res => {
 
