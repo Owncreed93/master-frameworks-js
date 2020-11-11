@@ -253,6 +253,16 @@ body {
     background-color: rgb(23, 150, 19);
 }
 
+.btn-warning{
+    background-color: rgb(255,235,59);
+    color: #ffffff !important;
+}
+
+.btn-danger{
+    background-color: rgb(244,67,54);
+    color: #ffffff !important;
+}
+
 .btn-success:hover{
     background: #000000;
 }
@@ -340,6 +350,10 @@ textarea{
     width: 100%;
     height: 100%;
     text-align: center;
+}
+
+.image-small {
+    width: 50%;
 }
 
 .article-item h2{

@@ -10,7 +10,7 @@ import Article from '../models/Article';
 import Sidebar from './Sidebar.vue';
 
 export default{
-    name: 'CreateArticle',
+    name: 'EditArticle',
     components: {
         Sidebar,
     },
@@ -20,7 +20,8 @@ export default{
             url: Global.url,
             file: '',
             article: new Article('', '', null, ''),
-            submitted: false
+            submitted: false,
+            isEdit: true
 
         }
     },
@@ -38,6 +39,8 @@ export default{
         
     },
     mounted() {
+        let articleId = this.$route.params.id;
+        this.getArticle(articleId);
     },
     methods: {
 
@@ -49,9 +52,28 @@ export default{
 
         },
 
+        getArticle(articleId) {
+            axios.get(this.url +'article/' +articleId)
+            .then( res => {
+
+                if( res.data.status == 'success' ){
+
+                    this.article = res.data.article;
+                    console.log(this.article);
+
+                }
+
+            })
+            .catch( error => {
+                console.error(error)
+            })
+        },
+
         save(){
 
             this.submitted = true;
+
+            let articleId = this.$route.params.id;
 
             this.$v.$touch();
 
@@ -63,7 +85,7 @@ export default{
 
                 
 
-                axios.post(this.url +'save', this.article)
+                axios.put(this.url +'article/' +articleId, this.article)
                 .then( response => {
 
                     if ( response.data.status === 'success' ){
@@ -86,16 +108,16 @@ export default{
                             .then( response => {
                                 if( response.data.article ) {
 
-                                    swal( 'Articulo creado', 'El articulo se ha creado correctamente', 'success' );
+                                    swal( 'Articulo editado', 'El articulo se ha modificado correctamente', 'success' );
 
                                     this.article = response.data.article;
 
-                                    this.$router.push('/blog');
+                                    this.$router.push('/articulo/' +this.article._id);
 
                                 } else {
 
                                     // SHOW ERROR MESSAGE
-                                    swal( 'Creación fallida', 'El articulo no se ha creado', 'error' );
+                                    swal( 'Edición fallida', 'El articulo no se ha modificado', 'error' );
 
                                 }
                             })
@@ -105,11 +127,11 @@ export default{
 
                         } else {
 
-                            swal( 'Articulo creado', 'El articulo se ha creado correctamente', 'success' );
+                            swal( 'Articulo editado', 'El articulo fue modificado correctamente', 'success' );
 
                             this.article = response.data.article;
 
-                            this.$router.push('/blog');
+                            this.$router.push('/articulo/' +this.article._id);
 
                         }
                        

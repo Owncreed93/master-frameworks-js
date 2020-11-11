@@ -26,7 +26,7 @@
                 <span class="date">
                     {{ article.date | moment("from", "now", true) }}
                 </span>
-                <a href="#">Leer m&aacute;s</a>
+                <router-link :to="{ name:'article', params: {id: article._id} }">Leer m&aacute;s</router-link>
 
                 <div class="clearfix"></div>
         

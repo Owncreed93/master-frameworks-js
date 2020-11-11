@@ -14,6 +14,7 @@ import Peliculas from './components/Peliculas.vue';
 import Search from './components/Search.vue';
 import Redirect from './components/Redirect.vue';
 import CreateArticle from './components/CreateArticle.vue';
+import EditArticle from './components/EditArticle.vue';
 
 // * EXTERNAL PACKAGES
 import VueRouter from 'vue-router';
@@ -39,6 +40,7 @@ const routes = [
   {path: '/blog', component: Blog},
   {path: '/articulo/:id', name:'article', component: Article},
   {path: '/crear-articulo', name: 'create', component: CreateArticle },
+  {path: '/editar-articulo/:id', component: EditArticle },
   {path: '/formulario', component: Formulario},
   {path: '/pagina/:id?', name: 'pagina', component: Pagina},
   {path: '/peliculas', name: 'peliculas', component: Peliculas},
